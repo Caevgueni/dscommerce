@@ -2,6 +2,7 @@ package com.devfernandes.dscommerce.entities;
 
 import java.time.Instant;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
@@ -89,6 +90,19 @@ public class Order {
 
 	public void setPayment(Payment payment) {
 		this.payment = payment;
+	}
+
+
+
+	public Set<OrderItem> getItems() {
+		return items;
+	}
+
+
+
+	public List<Product> getProduct(){
+		
+		return items.stream().map(x -> x.getProduct()).toList();
 	}
 
 	
