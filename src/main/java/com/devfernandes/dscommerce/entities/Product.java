@@ -1,5 +1,4 @@
 package com.devfernandes.dscommerce.entities;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -26,7 +25,7 @@ public class Product {
 	@Column(columnDefinition = "TEXT")
 	private String description;
 	private Double price;
-	private String imagUrl;
+	private String imgUrl;
 
 	@ManyToMany
 	@JoinTable(name = "tb_product_category", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
@@ -40,13 +39,13 @@ public class Product {
 
 	}
 
-	public Product(Long id, String name, String description, Double price, String imagUrl) {
+	public Product(Long id, String name, String description, Double price, String imgUrl) {
 
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.price = price;
-		this.imagUrl = imagUrl;
+		this.imgUrl = imgUrl;
 	}
 
 	public Long getId() {
@@ -82,11 +81,11 @@ public class Product {
 	}
 
 	public String getImagUrl() {
-		return imagUrl;
+		return imgUrl;
 	}
 
-	public void setImagUrl(String imagUrl) {
-		this.imagUrl = imagUrl;
+	public void setImagUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
 	}
 
 	public Set<Category> getCategories() {
