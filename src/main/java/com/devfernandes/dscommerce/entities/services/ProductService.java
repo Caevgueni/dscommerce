@@ -49,5 +49,20 @@ public class ProductService {
 		  
 		  */
 	}	
+	
+	
+	@Transactional
+	public ProductDTO insert(ProductDTO dto) {
+		
+		Product entity = new Product();
+		entity.setName(dto.getName());
+		entity.setDescription(dto.getDescription());
+		entity.setPrice(dto.getPrice());
+		entity.setImagUrl(dto.getImgUrl());
+		
+		entity = productRepository.save(entity);
+		
+		return new ProductDTO(entity);
+	}
 
 }
