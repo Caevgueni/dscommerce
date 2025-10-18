@@ -13,6 +13,8 @@ import com.devfernandes.dscommerce.entities.DTO.ProductDTO;
 import com.devfernandes.dscommerce.entities.repositories.ProductRepository;
 import com.devfernandes.dscommerce.entities.services.exceptions.ResourceNotFoundException;
 
+import jakarta.persistence.EntityNotFoundException;
+
 
 @Service
 public class ProductService {
@@ -64,10 +66,16 @@ public class ProductService {
 	
 	@Transactional
 	public ProductDTO update(Long id, ProductDTO dto) {
+		
+		try {
 		Product entity = productRepository.getReferenceById(id);
 		copyDtoToEntity(dto, entity);
 		entity= productRepository.save(entity);
 		return  new ProductDTO(entity);
+		}
+		catch(EntityNotFoundException e) {
+			throw new ResourceNotFoundException("Recurso nao encontrado");
+		}
 	}
 
 	@Transactional
