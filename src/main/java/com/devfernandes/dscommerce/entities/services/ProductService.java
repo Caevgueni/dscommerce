@@ -34,7 +34,7 @@ public class ProductService {
 		 Optional<Product> result = productRepository.findById(id);
 		 
 		 Product  product= productRepository.findById(id).orElseThrow(
-				 () -> new ResourceNotFoundException("Recurso nao encontrado") );
+				 () -> new ResourceNotFoundException("Recurso não encontrado") );
 		 
 		 return new ProductDTO(product);
 		 
