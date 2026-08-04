@@ -85,7 +85,7 @@ public class ProductService {
 	public void delet(Long id) {
 		if(!productRepository.existsById(id)) {
 			
-			throw new ResourceNotFoundException("Recurso o encontrado");
+			throw new ResourceNotFoundException("Recurso nao encontrado");
 		}
 		try {
 		productRepository.deleteById(id);

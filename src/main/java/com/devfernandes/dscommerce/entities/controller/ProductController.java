@@ -64,9 +64,7 @@ public class ProductController {
 
 		dto = productService.update(id, dto);
 		return ResponseEntity.ok(dto);
-		
-		
-
+				
 }
 	
 	@DeleteMapping(value = "/{id}")
