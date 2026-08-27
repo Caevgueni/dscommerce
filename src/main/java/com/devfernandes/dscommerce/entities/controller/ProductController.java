@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.devfernandes.dscommerce.entities.DTO.ProductDTO;
+import com.devfernandes.dscommerce.entities.DTO.ProductMinDTO;
 import com.devfernandes.dscommerce.entities.services.ProductService;
 
 import jakarta.validation.Valid;
@@ -30,20 +31,14 @@ public class ProductController {
 	private ProductService productService;
 
 	@GetMapping
-	public ResponseEntity<Page<ProductDTO>> findAll(Pageable pageable) {
-
-		Page<ProductDTO> dto = productService.findAll(pageable);
-
+	public ResponseEntity<Page<ProductMinDTO>> findAll(Pageable pageable) {
+		Page<ProductMinDTO> dto = productService.findAll(pageable);
 		return ResponseEntity.ok(dto);
 	}
-
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<ProductDTO> findById(@PathVariable Long id) {
-
 		ProductDTO dto = productService.findById(id);
-
 		return ResponseEntity.ok(dto);
-	
 	}
     
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_CLIENT')")
