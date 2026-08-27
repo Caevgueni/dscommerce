@@ -21,5 +21,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
       List<UserDetailsProjection> searchUserAndRolesByEmail(String email);
 
 	
-	Optional<User> findByEmail(String email);
+	
+	Optional<User> findByEmail(String email);// Encontrar o user por emal
 }
