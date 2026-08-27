@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.devfernandes.dscommerce.entities.Category;
 import com.devfernandes.dscommerce.entities.Product;
+import com.devfernandes.dscommerce.entities.DTO.CategoryDTO;
 import com.devfernandes.dscommerce.entities.DTO.ProductDTO;
 import com.devfernandes.dscommerce.entities.DTO.ProductMinDTO;
 import com.devfernandes.dscommerce.entities.repositories.ProductRepository;
@@ -102,6 +104,13 @@ public class ProductService {
 		entity.setDescription(dto.getDescription());
 		entity.setPrice(dto.getPrice());
 		entity.setImagUrl(dto.getImgUrl());
+		
+		entity.getCategories().clear(); // limpar a categoria antes de enserir nova
+		for(CategoryDTO catDto : dto.getCategories()) {
+			Category cat = new Category();
+			cat.setId(catDto.getId());
+			entity.getCategories().add(cat);
+		}
 	}
 	
 
