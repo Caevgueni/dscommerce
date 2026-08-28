@@ -42,6 +42,11 @@ public class Order {
 	@OneToMany(mappedBy = "id.order")
 	private Set<OrderItem>  items = new HashSet<>();
 	
+	
+	public Order() {
+		
+	}
+	
 	public Order(Long id, Instant moment, OrderStatus status, Payment payment, User client) {
 		this.id = id;
 		this.moment = moment;
@@ -97,6 +102,12 @@ public class Order {
 
 	public Set<OrderItem> getItems() {
 		return items;
+	}
+
+
+
+	public User getClient() {
+		return client;
 	}
 
 
