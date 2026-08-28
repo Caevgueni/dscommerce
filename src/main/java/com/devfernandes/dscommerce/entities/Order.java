@@ -119,12 +119,20 @@ public class Order {
 
 
 
+	public void setStatus(OrderStatus status) {
+		this.status = status;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}
 
 
+
+	public void setClient(User client) {
+		this.client = client;
+	}
 
 	@Override
 	public boolean equals(Object obj) {

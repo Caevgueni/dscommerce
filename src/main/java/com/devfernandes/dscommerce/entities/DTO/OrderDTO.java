@@ -8,6 +8,8 @@ import com.devfernandes.dscommerce.entities.Order;
 import com.devfernandes.dscommerce.entities.OrderItem;
 import com.devfernandes.dscommerce.entities.OrderStatus;
 
+import jakarta.validation.constraints.NotEmpty;
+
 public class OrderDTO {
 	
 	private Long id;
@@ -19,6 +21,7 @@ public class OrderDTO {
 	
 	private PaymentDTO payment;
 	
+	@NotEmpty(message ="O pedido deve ter pelo menos um tem")
 	private List<OrderItemDTO> items = new ArrayList<>();
 	
 	
