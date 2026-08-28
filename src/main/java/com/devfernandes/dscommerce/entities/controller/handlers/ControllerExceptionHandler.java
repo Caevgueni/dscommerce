@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.devfernandes.dscommerce.entities.services.exceptions.CustumError;
 import com.devfernandes.dscommerce.entities.services.exceptions.DatabaseException;
+import com.devfernandes.dscommerce.entities.services.exceptions.ForbiddenException;
 import com.devfernandes.dscommerce.entities.services.exceptions.ResourceNotFoundException;
 import com.devfernandes.dscommerce.entities.services.exceptions.ValidetionError;
 
@@ -47,4 +48,11 @@ public class ControllerExceptionHandler {
 		return ResponseEntity.status(status).body(err);
 	}
 
+	
+	@ExceptionHandler(ForbiddenException.class)
+	public ResponseEntity<CustumError> forbidden(ForbiddenException e, HttpServletRequest request) {
+		HttpStatus status = HttpStatus.FORBIDDEN;
+		CustumError err = new CustumError(Instant.now(), status.value(), e.getMessage(), request.getRequestURI());
+		return ResponseEntity.status(status).body(err);
+	}
 }
