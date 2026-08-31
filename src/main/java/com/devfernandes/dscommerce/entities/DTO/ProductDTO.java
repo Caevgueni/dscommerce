@@ -8,6 +8,7 @@ import com.devfernandes.dscommerce.entities.Product;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
@@ -24,6 +25,8 @@ public class ProductDTO {
 	@Size( min =10, message="nome precisa ser minimo 10 caracteres")
 	@NotBlank(message="campo requerido")
 	private String description;
+	
+	@NotNull(message="Camppo requerido")
 	@Positive(message="o valor deve ser positivo")
 	private Double price;
 	private String imgUrl;

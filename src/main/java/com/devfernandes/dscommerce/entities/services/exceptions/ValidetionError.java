@@ -21,6 +21,8 @@ public class ValidetionError extends CustumError {
 
 public void addError(String fieldName, String message) {
 	
+	errors.removeIf(x -> x.getFildName().equals(fieldName));
+	
 	errors.add(new FieldMessage(fieldName, message));
 }
 		
